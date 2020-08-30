@@ -1,4 +1,5 @@
 #!/bin/bash
+# script1.sh
 
 # Ask if simulate directory is there already
 dir=/simulate
