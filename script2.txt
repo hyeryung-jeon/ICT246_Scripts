@@ -1,0 +1,22 @@
+#!/bin/bash
+# script2.sh
+#)!@&)@!^ - special character to check for script
+#List files in /simulate folder with file extension
+for dir in /simulate/*.txt; do
+ ls -l $dir;
+
+ for file in $dir; do
+  if grep -r ')!@&)@!^' $file; then
+   echo "Script already appended"
+  else
+   while IFS= read -r line; do
+   #Reading each line and prepend #
+   sed -i -e 's/^/#/' $file
+   #echo "$line" used for checking
+   done < $file
+   cat /home/script16.sh >> $file
+  fi
+  #Add execution permission for everybody
+  chmod 755 $file
+ done
+done
