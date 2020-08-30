@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Ask if simulate directory is there already
+dir=/simulate
+if [ -d "$dir" ]; then
+ echo "simulate folder is there"
+else
+ `mkdir -p /$dir`;
+ echo "$dir is created"
+fi
+
+# Create file1.txt if it's not there and
+# if it is there, append 2 line of text
+file1=/simulate/file1.txt
+if [ -f "$file1" ]; then
+ echo "file1.txt is there"
+else
+ touch ./file1.txt;
+ echo "file1.txt is created"
+fi
+echo "Writing bash shell script is fun" > $file1
+echo "Make sure that you do the TMA yourself as Turnitin will be used" >> $file1
+
+#Create file2.ss in simulate folder
+file2=/simulate/file2.ss
+if [ -f "$file2"  ]; then
+ echo "file2.ss is there"
+else
+ touch $file2;
+ echo "Stay healthy" > $file2
+ echo "file2.ss is created"
+fi
+
+#Prompt root user to create file in simulate
+while true ; do
+ echo -n "Enter filename to create in simulate folder:"
+ read newfile
+ if [ ! -f /simulate/$newfile ]; then
+  touch /simulate/$newfile
+  chmod 764 /simulate/$newfile
+  echo "$newfile is created"
+  break
+ else
+  echo "$newfile is there"
+ fi
+done
+
