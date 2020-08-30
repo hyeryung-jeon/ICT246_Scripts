@@ -14,7 +14,7 @@ for dir in /simulate/*.txt; do
    sed -i -e 's/^/#/' $file
    #echo "$line" used for checking
    done < $file
-   cat /home/script16.sh >> $file
+   cat /home/script2.sh >> $file
   fi
   #Add execution permission for everybody
   chmod 755 $file
